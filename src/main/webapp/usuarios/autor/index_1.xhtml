@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+To change this template, choose Tools | Templates
+and open the template in the editor.
+-->
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:p="http://primefaces.org/ui">
+    <ui:decorate template="/tema/padrao.xhtml">
+        <ui:define name="centro" >
+                 <h:form id="teste">
+                     <p:commandButton value="Editar Cadastro"  action="pretty:autor-perfil"/><br/>
+                     <p:commandButton value="Cadastrar Projeto"  action="pretty:autor-projeto"/>
+                     <p:commandButton value="Editar Projeto"  action="pretty:autor-editProjeto"/><br/>
+                      <p:commandButton value="ver projetos"  action="pretty:visualizar"/>
+                 </h:form>
+        </ui:define>       
+    </ui:decorate>
+</html>

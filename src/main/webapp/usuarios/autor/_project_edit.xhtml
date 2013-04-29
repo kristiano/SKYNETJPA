@@ -1,0 +1,166 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+To change this template, choose Tools | Templates
+and open the template in the editor.
+-->
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:p="http://primefaces.org/ui">
+    <ui:decorate template="/tema/padrao.xhtml">
+        <ui:define name="centro" >
+                 <p:messages  id="msgs_atu" autoUpdate="true" showDetail="true" />
+                  <p:growl id="growl_atu" showDetail="true" sticky="true"/>
+                <h:form id="Dados" >
+                    <p:panel header="Atualização de Projetos">
+                         
+                            <h:panelGrid columns="1" cellpadding="2" width="100%"  >
+                               
+                                <p:tabView  >    
+                                    <p:tab title="Introduction">
+                                       
+                                        <br/>
+                                        <h:outputLabel  value="Title: "/><br/>  
+                                        <p:inputText id="title" value="#{projetoController.entity.title}" size="30"/>  
+                                        <br/>
+                                        <h:outputLabel  value="Abstract:"/><br/>                                     
+                                        <p:editor id="editor_abstract" value="#{projetoController.entity.abstractt}" width="600"/>  
+
+                                        <br/>
+                                        <h:outputLabel  value="Rationale:"/><br/>  
+                                        <p:editor id="editor_rationale" value="#{projetoController.entity.rationale}" width="600"/>                                  
+                                        <br/>
+                                        <h:outputLabel  value="Objectives:"/><br/>  
+                                        <p:editor id="editor_objectives" value="#{projetoController.entity.objectives}" width="600"/>                                  
+                                      </p:tab> 
+                                    <p:tab title="Results">   
+                                        <h:outputText value="*testResults" /><br/>
+                                        <p:editor id="editor_testResults" value="#{projetoController.entity.results.testResults}" width="600"/>
+                                        <br/>
+                                        <h:outputText value="outcomesEstimation" /><br/>
+                                        <p:editor id="editor_outcomesEstimation" value="#{projetoController.entity.results.outcomesEstimation}" width="600"/>
+                                        <br/>
+                                        <h:outputText value="otherAnalysis" /><br/>
+                                        <p:editor id="editor_otherAnalysis" value="#{projetoController.entity.results.otherAnalysis}" width="600"/>
+                                        <br/>
+                                        <h:outputText value="harms" /><br/>
+                                        <p:editor id="editor_harms" value="#{projetoController.entity.results.harms}" width="600"/>
+                                        <br/>
+                                        <h:outputText value="bias" /><br/>
+                                        <p:editor id="editor_bias" value="#{projetoController.entity.results.bias}" width="600"/>
+                                        <br/>
+                                        <h:outputText value="studySelection" /><br/>
+                                        <p:editor id="editor_studySelection" value="#{projetoController.entity.results.studySelection}" width="600"/>
+                                        <br/>
+                                        <h:outputText value="studyCharacteristics" /><br/>
+                                        <p:editor id="editor_studyCharacteristics" value="#{projetoController.entity.results.studyCharacteristics}" width="600"/>                         
+                                        <br/>
+                                        <h:outputText value="resultsIndividualStudies" /><br/>
+                                        <p:editor id="editor_resultsIndividualStudies" value="#{projetoController.entity.results.resultsIndividualStudies}" width="600"/>                         
+                                        <br/>
+                                        <h:outputText value="additionalAnalysis" /><br/>
+                                        <p:editor id="editor_additionalAnalysis" value="#{projetoController.entity.results.additionalAnalysis}" width="600"/>                         
+                                        <br/>
+                                        <h:outputText value="participants" /><br/>
+                                        <p:editor id="editor_participants" value="#{projetoController.entity.results.participants}" width="600"/>                         
+                                        <br/>
+                                        <h:outputText value="synthesisOfResults" /><br/>
+                                        <p:editor id="editor_synthesisOfResults" value="#{projetoController.entity.results.synthesisOfResults}" width="600"/>                         
+                                         <br/>
+                                        <h:outputText value="Observation" /><br/>
+                                        <p:editor id="editor_observation" value="#{projetoController.entity.results.observation}" width="600"/>                         
+                                       
+
+                                    </p:tab> 
+                                    <p:tab title="Methods">
+                                        <h:outputText value="studyDesign" /><br/>
+                                        <p:editor id="editor_studyDesign" value="#{projetoController.entity.methods.studyDesign}" width="600"/>
+                                        <br/>
+                                        <h:outputText value="testMethod" /><br/>
+                                        <p:editor id="editor_testMethod" value="#{projetoController.entity.methods.testMethod}" width="600"/>
+
+                                        <br/>
+                                        <h:outputText value="statisticalMethods" /><br/>
+                                        <p:editor id="editor_statisticalMethods" value="#{projetoController.entity.methods.statisticalMethods}" width="600"/>
+                                        <br/>
+                                        <h:outputText value="bias" /><br/>
+                                        <p:editor id="editor_bias2" value="#{projetoController.entity.methods.bias}" width="600"/>
+                                        <br/>
+                                        <h:outputText value="riskOfBias" /><br/>
+                                        <p:editor id="editor_riskOfBias" value="#{projetoController.entity.methods.riskOfBias}" width="600"/>
+                                        <br/>
+                                        <h:outputText value="variablesMeasures" /><br/>
+                                        <p:editor id="editor_variablesMeasures" value="#{projetoController.entity.methods.variablesMeasures}" width="600"/>
+                                        <br/>
+                                        <h:outputText value="radomization" /><br/>
+                                        <p:editor id="editor_radomization" value="#{projetoController.entity.methods.radomization}" width="600"/>
+                                        <br/>
+                                        <h:outputText value="studyEligilityCriteria" /><br/>
+                                        <p:editor id="editor_studyEligilityCriteria" value="#{projetoController.entity.methods.studyEligilityCriteria}" width="600"/>
+                                        <br/>
+                                        <h:outputText value="informationSources" /><br/>
+                                        <p:editor id="editor_informationSources" value="#{projetoController.entity.methods.informationSources}" width="600"/>
+                                        <br/>
+                                        <h:outputText value="intervations" /><br/>
+                                        <p:editor id="editor_intervations" value="#{projetoController.entity.methods.intervations}" width="600"/>
+                                        <br/>
+                                        <h:outputText value="searching" /><br/>
+                                        <p:editor id="editor_searching" value="#{projetoController.entity.methods.searching}" width="600"/>
+                                        <br/>
+                                        <h:outputText value="settings" /><br/>
+                                        <p:editor id="editor_settings" value="#{projetoController.entity.methods.settings}" width="600"/>
+                                        <br/>
+                                        <h:outputText value="studySelection" /><br/>
+                                        <p:editor id="editor_studySelection2" value="#{projetoController.entity.methods.studySelection}" width="600"/>
+                                        <br/>                             
+                                        <h:outputText value="settingParticipant" />
+                                        <p:editor id="editor_settingParticipant" value="#{projetoController.entity.methods.settingParticipant}" width="600"/>
+                                        <br/>
+                                        <h:outputText value="changeOfStudyDesign" />
+                                        <br/>
+                                        <p:editor id="editor_changeOfStudyDesign" value="#{projetoController.entity.methods.changeOfStudyDesign}" width="600"/>
+                                        <br/>
+                                        <h:outputText value="observation" /><br/>
+                                        <p:editor id="editor_observation2" value="#{projetoController.entity.methods.observation}" width="600"/>
+                                       
+                                    </p:tab> 
+                                    <p:tab title="Discussion">
+                                        <h:outputText value="keyResults" /><br/>
+                                        <p:editor id="editor_keyResults" value="#{projetoController.entity.discussion.keyResults}" width="600"/>
+                                        <br/>
+                                        <h:outputText value="interpretation" /><br/>
+                                        <p:editor id="editor_interpretation" value="#{projetoController.entity.discussion.interpretation}" width="600"/>
+
+                                        <br/>
+                                        <h:outputText value="limitations" /><br/>
+                                        <p:editor id="editor_limitations" value="#{projetoController.entity.discussion.limitations}" width="600"/>
+                                        <br/>
+                                        <h:outputText value="generalisability" /><br/>
+                                        <p:editor id="editor_generalisability" value="#{projetoController.entity.discussion.generalisability}" width="600"/>
+                                        <br/>
+                                        <h:outputText value="registration" /><br/>
+                                        <p:editor id="editor_registration" value="#{projetoController.entity.discussion.registration}" width="600"/>
+
+                                        <br/>
+                                        <h:outputText value="protocol" /><br/>
+                                        <p:editor id="editor_protocol" value="#{projetoController.entity.discussion.protocol}" width="600"/>
+
+
+                                        <h:outputText value="funding" /><br/>
+                                        <p:editor id="editor_funding" value="#{projetoController.entity.discussion.funding}" width="600"/>
+
+                                        
+                                    </p:tab>
+
+                                </p:tabView>
+                                   
+                            </h:panelGrid>
+                          
+                        <p:commandButton id="edit_projeto" value="Atualizar Projeto"  update=":msgs_atu :growl_atu" actionListener="#{projetoController.update}"/>
+                             
+                   </p:panel> 
+                </h:form>
+        </ui:define>       
+    </ui:decorate>
+</html>

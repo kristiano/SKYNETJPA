@@ -1,0 +1,101 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+To change this template, choose Tools | Templates
+and open the template in the editor.
+-->
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:f="http://java.sun.com/jsf/core">
+    <ui:decorate template="/tema/padrao.xhtml">
+        <ui:define name="head">
+                <style type="text/css">
+                    .ui-dashboard-column {
+                        width:300px;
+                        height: 200px;
+                        
+                    }
+                </style>
+       </ui:define>
+        <ui:define name="centro" > 
+            <h:form id="form" prependId="false">
+                      <p:growl id="growl" showDetail="true" />
+                        <p:dashboard id="board" model="#{viewController.model}">
+                            <p:ajax event="reorder" listener="#{viewController.handleReorder}" update="growl" />
+
+                            <p:panel id="projects" header="My Projects" style="text-align:center" >
+                                <h:panelGrid columns="1" style="width:100%"> 
+                                        <p:dataList value="#{projetoController.listProjetobyUser}" var="proj" id="proj"  >
+                                             <p:commandButton icon="ui-icon-search" update=":form:projDetail" oncomplete="inserir.show()" title="View Detail">  
+                                                <f:setPropertyActionListener value="#{proj}" target="#{projetoController.entity}" />  
+                                            </p:commandButton>
+                                           
+                                            
+                                            <h:commandLink action = "pretty:autor-editProjeto" value = "#{proj.title}" style="margin-left:10px">
+                                                <f:setPropertyActionListener value="#{proj}" target="#{projetoController.entity}" />
+                                            </h:commandLink>
+                                        </p:dataList>
+                                        <p:dialog  maximizable="true" minimizable="true" widgetVar="inserir" hideEffect="fade" >                      
+                                                <p:outputPanel id="projDetail" style="text-align:center;" layout="block"> 
+                                                    <h:panelGrid  columns="2" cellpadding="5">  
+                                                        <h:outputLabel for="titulo" value="Titulo: " />  
+                                                        <h:outputText id="titulo" value="#{projetoController.entity.title}" />  
+
+                                                        <h:outputLabel for="data_cre" value="Date Create: " />  
+                                                        <h:outputText id="data_cre" value="#{projetoController.entity.dataCriacao}" converter="DATAConverter"/> 
+                                                        
+                                                         <h:outputLabel for="data_upd" value="Date Updated: " />  
+                                                         <h:outputText id="data_upd" value="#{projetoController.entity.dataUltimaAtualizacao}" converter="DATAConverter" />  
+                                                        
+                                                        <h:outputLabel for="abs" value="Abstract: " />  
+                                                        <h:outputText id="abs" value="#{projetoController.entity.abstractt}" /> 
+                                                        
+                                                        <h:outputLabel for="obj" value="Objectives: " />  
+                                                        <h:outputText id="obj" value="#{projetoController.entity.objectives}" />  
+                                                         
+                                                        <p:commandButton id="buttonExcluir" icon="ui-icon-trash" onclick="confirmation.show()"> 
+                                                            <f:setPropertyActionListener value="#{projeto}" target="#{projetoController.entity}" />
+                                                            <p:tooltip for="buttonExcluir" value="Clique aqui para Excluir este Curso" showEffect="fade" hideEffect="fade"/>
+                                                        </p:commandButton>
+                                                         <p:dialog id="confirmDialog" header="Do you really wanna remove this research project?" 
+                                                                    widgetVar="confirmation" closable="false">  
+
+                                                              <p:commandButton id="confirm" value="Yes" action="#{projetoController.remove}" process="@form" update="projects" oncomplete="confirmation.hide()"/>  
+                                                              <p:commandButton id="decline" value="No" onclick="confirmation.hide()" type="button" />   
+
+                                                        </p:dialog>    
+                                                    </h:panelGrid>  
+                                                </p:outputPanel>  
+                                            <p:commandButton value="Close" oncomplete="inserir.hide()" />
+
+                                        </p:dialog>
+                                        
+                                </h:panelGrid>
+                            </p:panel>
+
+                            <p:panel id="favorites" header="Favorites" style="text-align:center">
+                                <h:panelGrid columns="1" style="width:100%">  
+                                 <h:outputText value="Finance Content" />
+                                </h:panelGrid>
+                            </p:panel>
+
+                            <p:panel id="coaut" header="Co-Authorship" style="text-align:center">
+                                <h:panelGrid columns="1" style="width:100%">  
+                                 <h:outputText value="Lifestyle Content"  />
+                                </h:panelGrid>
+                            </p:panel>
+
+                            <p:panel id="invite" header="Invites" style="text-align:center">
+                                <h:panelGrid columns="1" style="width:100%">  
+                                 <h:outputText value="Weather Content" />
+                                </h:panelGrid>
+                            </p:panel>
+
+                           
+                        </p:dashboard>
+                 </h:form>
+        </ui:define>       
+    </ui:decorate>
+</html>

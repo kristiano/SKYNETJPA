@@ -1,0 +1,339 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="historico_licencas" pageWidth="595" pageHeight="842" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="3591c7c3-0fe0-45b0-abb1-942aecbeca1f">
+	<property name="ireport.zoom" value="2.0"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="532"/>
+	<style name="table">
+		<box>
+			<pen lineWidth="1.0" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table_TH" mode="Opaque" backcolor="#F0F8FF">
+		<box>
+			<pen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table_CH" mode="Opaque" backcolor="#BFE1FF">
+		<box>
+			<pen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table_TD" mode="Opaque" backcolor="#FFFFFF">
+		<box>
+			<pen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+		<conditionalStyle>
+			<conditionExpression><![CDATA[new Boolean($V{REPORT_COUNT}.intValue()%2==0)]]></conditionExpression>
+			<style backcolor="#EFF7FF"/>
+		</conditionalStyle>
+	</style>
+	<subDataset name="hist" uuid="f256d822-1a81-44b9-b777-7de39a0b3fe5">
+		<parameter name="NOME" class="java.lang.String" isForPrompting="false"/>
+		<queryString language="ejbql">
+			<![CDATA[SELECT a.seq,a.dataentrada,a.tipolicenca,a.ndias,a.periodoinicio,a.periodofim
+from LicencaBase a where a.nome = $P{NOME}]]>
+		</queryString>
+		<field name="seq" class="java.lang.String"/>
+		<field name="dataentrada" class="java.util.Date"/>
+		<field name="tipolicenca" class="java.lang.String"/>
+		<field name="ndias" class="java.lang.String"/>
+		<field name="periodoinicio" class="java.util.Date"/>
+		<field name="periodofim" class="java.util.Date"/>
+	</subDataset>
+	<parameter name="id" class="java.lang.Long"/>
+	<queryString language="ejbql">
+		<![CDATA[SELECT a.nome,a.cargo,a.matricula,a.orgao,a.lotacao
+from LicencaBase a where a.id=$P{id}]]>
+	</queryString>
+	<field name="nome" class="java.lang.String"/>
+	<field name="cargo" class="java.lang.String"/>
+	<field name="matricula" class="java.lang.String"/>
+	<field name="orgao" class="java.lang.String"/>
+	<field name="lotacao" class="java.lang.String"/>
+	<group name="detalhe">
+		<groupHeader>
+			<band height="148">
+				<staticText>
+					<reportElement uuid="a57a58d6-583d-474c-aec8-f6df1f93a18c" x="0" y="0" width="26" height="10"/>
+					<textElement>
+						<font fontName="Arial" size="8" isBold="true"/>
+					</textElement>
+					<text><![CDATA[NOME]]></text>
+				</staticText>
+				<staticText>
+					<reportElement uuid="ea16756f-8fc9-4039-9346-883aa055cce5" x="0" y="12" width="43" height="10"/>
+					<textElement>
+						<font fontName="Arial" size="8" isBold="true"/>
+					</textElement>
+					<text><![CDATA[CARGO]]></text>
+				</staticText>
+				<staticText>
+					<reportElement uuid="e0a851d0-22fe-4cd9-a897-f1fe189e61d0" x="0" y="25" width="43" height="12"/>
+					<textElement>
+						<font fontName="Arial" size="8" isBold="true"/>
+					</textElement>
+					<text><![CDATA[SITUAÇÃO]]></text>
+				</staticText>
+				<staticText>
+					<reportElement uuid="e0c4a6e1-5b93-4de7-8512-2bca60096adc" x="0" y="39" width="53" height="11"/>
+					<textElement>
+						<font fontName="Arial" size="8" isBold="true"/>
+					</textElement>
+					<text><![CDATA[MATRICULA]]></text>
+				</staticText>
+				<staticText>
+					<reportElement uuid="4ba25e06-9158-44d9-9706-ef36b63a1dc2" x="0" y="52" width="16" height="10"/>
+					<textElement>
+						<font fontName="Arial" size="8" isBold="true"/>
+					</textElement>
+					<text><![CDATA[CPF]]></text>
+				</staticText>
+				<staticText>
+					<reportElement uuid="68832dd1-dc5f-40db-933f-6ff3e673feb7" x="0" y="77" width="43" height="11"/>
+					<textElement>
+						<font fontName="Arial" size="8" isBold="true"/>
+					</textElement>
+					<text><![CDATA[ORGAO]]></text>
+				</staticText>
+				<staticText>
+					<reportElement uuid="69b96926-0cd4-4817-82da-45803135c701" x="0" y="90" width="43" height="11"/>
+					<textElement>
+						<font fontName="Arial" size="8" isBold="true"/>
+					</textElement>
+					<text><![CDATA[LOTAÇÃO]]></text>
+				</staticText>
+				<staticText>
+					<reportElement uuid="9b373119-dce6-4848-ad24-635a49bb474b" x="0" y="64" width="57" height="11"/>
+					<textElement>
+						<font fontName="Arial" size="8" isBold="true"/>
+					</textElement>
+					<text><![CDATA[PREVIDENCIA]]></text>
+				</staticText>
+				<staticText>
+					<reportElement uuid="d20a6ac0-be4b-4b5f-8a23-c4197d232a1f" x="1" y="117" width="45" height="11"/>
+					<textElement>
+						<font fontName="Arial" size="8" isBold="true"/>
+					</textElement>
+					<text><![CDATA[MUNICIPIO]]></text>
+				</staticText>
+				<staticText>
+					<reportElement uuid="ca1aef4a-1789-48a3-835c-89c8c7759b95" x="2" y="130" width="55" height="10"/>
+					<textElement>
+						<font fontName="Arial" size="8" isBold="true"/>
+					</textElement>
+					<text><![CDATA[PRONTUARIO]]></text>
+				</staticText>
+				<staticText>
+					<reportElement uuid="685ca18e-7f98-4e8c-b726-691ade78f3e5" x="0" y="105" width="69" height="10"/>
+					<textElement>
+						<font fontName="Arial" size="8" isBold="true"/>
+					</textElement>
+					<text><![CDATA[OBSERVACOES]]></text>
+				</staticText>
+				<textField>
+					<reportElement uuid="72f8a4b3-91c1-4b5d-bda2-0b32a00bdabc" x="80" y="0" width="226" height="10"/>
+					<textElement>
+						<font fontName="Arial" size="8"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$F{nome}]]></textFieldExpression>
+				</textField>
+				<textField>
+					<reportElement uuid="df7b7387-e7dd-425c-9655-92ffdbe9cc19" x="80" y="12" width="225" height="10"/>
+					<textElement>
+						<font fontName="Arial" size="8"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$F{cargo}]]></textFieldExpression>
+				</textField>
+				<textField>
+					<reportElement uuid="a31709d8-97e6-475c-91ea-e9200f21cd33" x="80" y="40" width="61" height="10"/>
+					<textElement>
+						<font fontName="Arial" size="8"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$F{matricula}]]></textFieldExpression>
+				</textField>
+				<textField>
+					<reportElement uuid="2a7963a6-4b6c-4667-86ff-a41660f19077" x="80" y="77" width="223" height="11"/>
+					<textElement>
+						<font fontName="Arial" size="8"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$F{orgao}]]></textFieldExpression>
+				</textField>
+				<textField>
+					<reportElement uuid="77f699d8-87c5-4139-ad9f-cd5edafbcb76" x="80" y="91" width="223" height="10"/>
+					<textElement>
+						<font fontName="Arial" size="8"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$F{lotacao}]]></textFieldExpression>
+				</textField>
+			</band>
+		</groupHeader>
+	</group>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band splitType="Stretch"/>
+	</title>
+	<pageHeader>
+		<band height="126" splitType="Stretch">
+			<frame>
+				<reportElement uuid="d7d086a2-1f6b-43e8-acaa-ad0585c9889b" x="319" y="103" width="236" height="13"/>
+				<staticText>
+					<reportElement uuid="d4aa4ec9-56ee-46f8-910c-f647daf5462d" x="0" y="1" width="222" height="10"/>
+					<textElement textAlignment="Right" verticalAlignment="Bottom">
+						<font fontName="Arial" size="8"/>
+					</textElement>
+					<text><![CDATA[Palmas, Quarta-Feira, 16 de maio de 2012]]></text>
+				</staticText>
+			</frame>
+			<image>
+				<reportElement uuid="b7a730fc-507c-4035-9645-15094c985b59" x="0" y="24" width="555" height="79"/>
+				<box>
+					<pen lineWidth="0.5"/>
+					<topPen lineWidth="0.5"/>
+					<leftPen lineWidth="0.5"/>
+					<bottomPen lineWidth="0.5"/>
+					<rightPen lineWidth="0.5"/>
+				</box>
+				<imageExpression><![CDATA["C:\\Users\\kristiano.fernandes.ANEXO\\Documents\\NetBeansProjects\\SkynetProject\\src\\main\\webapp\\Untitled-1.jpg"]]></imageExpression>
+			</image>
+		</band>
+	</pageHeader>
+	<columnHeader>
+		<band splitType="Stretch"/>
+	</columnHeader>
+	<detail>
+		<band height="125" splitType="Stretch">
+			<componentElement>
+				<reportElement uuid="55f41981-6ee7-498f-aeff-614d8ee94c22" key="table" style="table" isPrintRepeatedValues="false" x="0" y="0" width="555" height="125"/>
+				<jr:table xmlns:jr="http://jasperreports.sourceforge.net/jasperreports/components" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports/components http://jasperreports.sourceforge.net/xsd/components.xsd">
+					<datasetRun subDataset="hist" uuid="3d7c9d15-d379-4d22-9d04-be0cc76f6929">
+						<parametersMapExpression><![CDATA[$P{JPA_ENTITY_MANAGER}]]></parametersMapExpression>
+						<datasetParameter name="NOME">
+							<datasetParameterExpression><![CDATA[$F{nome}]]></datasetParameterExpression>
+						</datasetParameter>
+						<connectionExpression><![CDATA[$P{REPORT_CONNECTION}]]></connectionExpression>
+					</datasetRun>
+					<jr:column uuid="b49a8980-3b86-4b96-a126-0feb5928365a" width="90">
+						<jr:columnHeader style="table_CH" height="30" rowSpan="1">
+							<staticText>
+								<reportElement uuid="27368138-c69a-46c4-8fa2-b03bf894d6ed" x="0" y="0" width="90" height="30"/>
+								<textElement textAlignment="Center" verticalAlignment="Middle"/>
+								<text><![CDATA[Sequência]]></text>
+							</staticText>
+						</jr:columnHeader>
+						<jr:detailCell style="table_TD" height="37" rowSpan="1">
+							<textField>
+								<reportElement uuid="1208f1de-38bd-4577-b812-0e94f070d705" x="0" y="5" width="90" height="20"/>
+								<textElement textAlignment="Center"/>
+								<textFieldExpression><![CDATA[$F{seq}]]></textFieldExpression>
+							</textField>
+						</jr:detailCell>
+					</jr:column>
+					<jr:column uuid="8542f0ec-f729-4843-9128-5a9972e2eb55" width="90">
+						<jr:columnHeader style="table_CH" height="30" rowSpan="1">
+							<staticText>
+								<reportElement uuid="0b1f9f60-b21e-47f6-8d4d-6a85d8b7e36e" x="0" y="0" width="90" height="30"/>
+								<textElement textAlignment="Center" verticalAlignment="Middle"/>
+								<text><![CDATA[Data Entrada]]></text>
+							</staticText>
+						</jr:columnHeader>
+						<jr:detailCell style="table_TD" height="37" rowSpan="1">
+							<textField>
+								<reportElement uuid="c575ac60-cd08-4459-9e32-083f9b600b7a" x="0" y="5" width="90" height="20"/>
+								<textElement textAlignment="Center"/>
+								<textFieldExpression><![CDATA[$F{dataentrada}]]></textFieldExpression>
+							</textField>
+						</jr:detailCell>
+					</jr:column>
+					<jr:column uuid="c3aa7efc-6aa2-4475-b3cd-3b00703a6760" width="125">
+						<jr:columnHeader style="table_CH" height="30" rowSpan="1">
+							<staticText>
+								<reportElement uuid="3fc22255-a0cc-48c2-832e-15f0adb88922" x="0" y="0" width="90" height="30"/>
+								<textElement textAlignment="Center" verticalAlignment="Middle"/>
+								<text><![CDATA[Especificação]]></text>
+							</staticText>
+						</jr:columnHeader>
+						<jr:detailCell style="table_TD" height="37" rowSpan="1">
+							<textField>
+								<reportElement uuid="4f51ca1a-4655-42c9-830d-847706bb7877" x="0" y="0" width="125" height="34"/>
+								<textElement textAlignment="Center" verticalAlignment="Middle"/>
+								<textFieldExpression><![CDATA[$F{tipolicenca}]]></textFieldExpression>
+							</textField>
+						</jr:detailCell>
+					</jr:column>
+					<jr:column uuid="74f51505-de98-40a9-bce6-d84b03c90936" width="104">
+						<jr:columnHeader style="table_CH" height="30" rowSpan="1">
+							<staticText>
+								<reportElement uuid="b7e13b4a-8e67-4f97-836f-65c9a1bd2f51" x="12" y="0" width="90" height="30"/>
+								<textElement textAlignment="Center" verticalAlignment="Middle"/>
+								<text><![CDATA[Dias de Licença]]></text>
+							</staticText>
+						</jr:columnHeader>
+						<jr:detailCell style="table_TD" height="37" rowSpan="1">
+							<textField>
+								<reportElement uuid="614463aa-644e-4e7f-b19a-0dcf6a93453e" x="10" y="6" width="90" height="20"/>
+								<textElement textAlignment="Center"/>
+								<textFieldExpression><![CDATA[$F{ndias}]]></textFieldExpression>
+							</textField>
+						</jr:detailCell>
+					</jr:column>
+					<jr:column uuid="13ba7558-1482-4bf5-be76-37d580b01a87" width="139">
+						<jr:columnHeader style="table_CH" height="30" rowSpan="1">
+							<staticText>
+								<reportElement uuid="3eaf14ff-0586-4551-8129-294cc5d9c2e1" x="0" y="0" width="123" height="30"/>
+								<textElement textAlignment="Center" verticalAlignment="Middle"/>
+								<text><![CDATA[Periodo de Gozo]]></text>
+							</staticText>
+						</jr:columnHeader>
+						<jr:detailCell style="table_TD" height="37" rowSpan="1">
+							<textField>
+								<reportElement uuid="a394b855-065a-45c6-a895-4390088b9bd0" x="0" y="0" width="123" height="18"/>
+								<textElement/>
+								<textFieldExpression><![CDATA[$F{periodoinicio}]]></textFieldExpression>
+							</textField>
+							<textField>
+								<reportElement uuid="7e1b24fb-0ef3-4059-8b74-61293943703d" x="0" y="18" width="123" height="18"/>
+								<textElement/>
+								<textFieldExpression><![CDATA[$F{periodofim}]]></textFieldExpression>
+							</textField>
+						</jr:detailCell>
+					</jr:column>
+				</jr:table>
+			</componentElement>
+		</band>
+	</detail>
+	<columnFooter>
+		<band height="38" splitType="Stretch">
+			<staticText>
+				<reportElement uuid="652b745f-a299-4cd5-967a-534c2d1efe4b" x="174" y="16" width="220" height="20"/>
+				<textElement textAlignment="Center">
+					<font fontName="Arial" size="8"/>
+				</textElement>
+				<text><![CDATA[Agente de Perícia Médica]]></text>
+			</staticText>
+			<line>
+				<reportElement uuid="37c7ce85-d5ba-4728-aed2-8e8a395bcd1d" x="155" y="12" width="273" height="1"/>
+			</line>
+		</band>
+	</columnFooter>
+	<pageFooter>
+		<band height="35" splitType="Stretch">
+			<staticText>
+				<reportElement uuid="3b5ee54d-f907-4eab-bb12-d02e6833e00e" x="93" y="8" width="462" height="25"/>
+				<textElement textAlignment="Right">
+					<font fontName="Arial" size="8"/>
+				</textElement>
+				<text><![CDATA[Secretaria da Administração – Anexo I: Quadra 103 Sul, Rua SO-01, Conj. 02,
+Lote 38, Edifício PIPES I, Plano Diretor Sul – CEP:77.015-014 – Palmas/TO Tel: 63 3218-1547
+]]></text>
+			</staticText>
+			<line>
+				<reportElement uuid="93ff9047-d54a-4cd3-ae3c-ce213be472a3" x="0" y="4" width="555" height="1"/>
+			</line>
+		</band>
+	</pageFooter>
+	<summary>
+		<band splitType="Stretch"/>
+	</summary>
+</jasperReport>

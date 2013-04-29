@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+To change this template, choose Tools | Templates
+and open the template in the editor.
+-->
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:p="http://primefaces.org/ui">
+    <ui:decorate template="/tema/padrao.xhtml">
+        <ui:define name="centro" >
+             <p:messages id="messages" showDetail="true" autoUpdate="true" closable="true" />
+             <h:form id="teste" prependId="false">
+                    <h:panelGrid columns="4"  cellpadding="5" id="meuPainel">                               
+                                
+                                <p:column>
+                                    
+                                    <h:outputLabel for="prontuario" value="Prontuário: " />
+                                    <p:inputText  id="prontuario"   label="prontuario" required="true" value="#{prontuarioController.inferno.numero}" />
+                                </p:column>
+                                <p:column>
+                                 <p:message for="prontuario" id="msg_prontuario" display="text"/> 
+                                </p:column>
+                                <p:column>
+                                    <p:commandButton id="cadastrar" value="Cadastrar" update="meuPainel" oncomplete="inserir.show()" actionListener="#{prontuarioController.numeroo}"/>  
+                                  </p:column>
+                                 <p:watermark  for="prontuario" value="Nº do Prontuário"/>
+                                   <p:dialog  maximizable="true" minimizable="true" widgetVar="inserir" hideEffect="fade" > 
+                                       <p:outputPanel id="projDetail" style="text-align:center;" layout="block">
+                                           <h:panelGrid  columns="2" cellpadding="5"> 
+                                                <h:outputLabel for="numero" value="Numero do Prontuario: " />  
+                                                <h:outputText id="numero" value="#{prontuarioController.entity.numero}" />
+                                           </h:panelGrid>    
+                                       </p:outputPanel>
+                                   </p:dialog>
+                                   <p:commandButton value="inferno"  action="pretty:user-cadastro"/>  
+                                
+                          </h:panelGrid>
+                  
+                 </h:form>
+        </ui:define>       
+    </ui:decorate>
+</html>

@@ -1,0 +1,43 @@
+<?xml version='1.0' encoding='UTF-8' ?> 
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:f="http://java.sun.com/jsf/core">
+
+    <h:head>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+        <title>SECAD</title>
+        <style type="text/css">
+            body {background-color: #eeeeee; font-size: 12px}
+        </style> 
+    </h:head>
+    <h:body>
+        <div align="center">
+            <p:layout style="min-width:990px;max-width:990px;min-height:380px">  
+                <p:layoutUnit position="north" size="130">  
+                    <h:graphicImage url="/tema/imagens/marca.png" />
+                    <ui:insert name="cabecalho">
+                      
+                    </ui:insert>
+                </p:layoutUnit>  
+
+              
+                <p:layoutUnit position="center" >  
+                    <ui:insert name="centro">
+                      
+                    </ui:insert>
+                </p:layoutUnit>
+                <p:layoutUnit position="south" size="45">  
+                    <ui:insert name="rodape" >
+                       
+                        SECAD
+                         
+                    </ui:insert>
+                </p:layoutUnit>
+                
+            </p:layout>  
+        </div>
+    </h:body>
+</html>

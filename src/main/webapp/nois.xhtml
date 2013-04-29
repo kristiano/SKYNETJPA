@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+To change this template, choose Tools | Templates
+and open the template in the editor.
+-->
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:f="http://java.sun.com/jsf/core">
+    <ui:decorate template="/tema/padrao.xhtml">
+        <ui:define name="centro" >
+            <h:form  prependId="false">
+                     <p:panel id="el" header="Lista Todos os Remanejos de Função">  
+                 <p:dataTable id="tabe" value="#{vidaFuncionalController.vidasJa}" var="c" paginator="true" rows="5">
+                    
+                   
+                    <p:column>
+                        <f:facet name="header">
+                            <h:outputText value="Orgao"/>
+                        </f:facet>
+                        <h:outputText value="#{c.orgao.nome}" />
+                    </p:column>
+                     
+                      <p:column>
+                        <f:facet name="header">
+                            <h:outputText value="cargo"/>
+                        </f:facet>
+                        <h:outputText value="#{c.cargo.nome}" />
+                    </p:column>
+                  
+                  
+                </p:dataTable>
+                         <p:commandButton value="ok" update="el" actionListener="#{vidaFuncionalController.cu}"/>
+                         <p:commandButton actionListener="#{reportControl.PDF}"  ajax="false" value="PDF"/>
+               
+             </p:panel>
+                 </h:form>
+        </ui:define>       
+    </ui:decorate>
+</html>

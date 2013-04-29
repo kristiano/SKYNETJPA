@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+To change this template, choose Tools | Templates
+and open the template in the editor.
+-->
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:p="http://primefaces.org/ui">
+    <ui:decorate template="/tema/registeruser.xhtml">
+        <ui:define name="centro" >
+                 <p:messages  id="msgs_autor" autoUpdate="true" showDetail="true" />
+                 <h:form id="dados_autor" prependId="false">
+                    <p:panel header="Cadastro de Usuário" id="panel">
+                        <h:panelGrid columns="1" cellpadding="1" width="100%" >
+                                <h:outputLabel  value="*Nome: "/> 
+                                <p:inputText title="Exemplo: Paulo José da Silva" id="codigo" required="true" requiredMessage="Nome: Campo Obrigatório" value="#{theUserController.entity.nome}" />
+                              
+                               <h:outputText  value="*E-mail:"/> 
+                              <p:inputText title="Exemplo: paulo@live.com"  maxlength="50" size="30"  autocomplete="off" value="#{theUserController.entity.email}" required="true" requiredMessage="E-mail: Campo Obrigatório"/>
+                                 
+                              <h:outputLabel  value="*Senha: "/>
+                              <p:password  id="senha" required="true" requiredMessage="Senha: Campo Obrigatório" value="#{theUserController.entity.password}" /> 
+                                
+                             
+                               
+                                <p:commandButton id="inserir_dados" value="Inserir" update=":msgs_autor panel" actionListener="#{theUserController.insert}">
+                                    <p:tooltip for="inserir_dados" value="Clique aqui para inserir os dados" showEffect="fade" hideEffect="fade"/>
+                                </p:commandButton>
+                        </h:panelGrid>
+                    </p:panel>
+                </h:form>
+        </ui:define>       
+    </ui:decorate>
+</html>

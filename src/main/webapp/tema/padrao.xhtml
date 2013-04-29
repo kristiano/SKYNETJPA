@@ -1,0 +1,61 @@
+<?xml version='1.0' encoding='UTF-8' ?> 
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:f="http://java.sun.com/jsf/core">
+
+    <h:head>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+        <title>SECAD</title>
+        <style type="text/css">
+            body {background-color: #eeeeee; font-size: 12px}
+        </style> 
+         <ui:insert name="head"/>
+    </h:head>
+    <h:body>
+        <div align="center">
+            <p:layout style="min-width:1020px;max-width:1020px;min-height:790px">  
+                <p:layoutUnit position="north" size="118">  
+                    <h:graphicImage url="/tema/imagens/marca.png" />
+                    
+                </p:layoutUnit>  
+
+                <p:layoutUnit position="west" size="220">  
+                    <ui:insert name="menu">
+                        <h:form>
+                            <p:menu style="width: 200px">
+                                <p:submenu label="Menu">
+                                  <p:menuitem value="Inicio" outcome="pretty:inicio" icon="ui-icon-home" />
+                                   <p:separator/>
+                                    <p:menuitem value="Pesquisar"  icon="ui-icon ui-icon-search" />
+                                    <p:separator/>
+                                    <p:menuitem value="Sair" url="/j_spring_security_logout" icon="ui-icon ui-icon-power" />  
+                                </p:submenu>
+                            </p:menu>
+                            <h:outputLabel value="Usuário Logado: "/>
+                            <h:outputLink value="Usuario:">#{UsuarioController.loggedUsuario.nome}</h:outputLink>
+                        </h:form>
+                    </ui:insert>
+                </p:layoutUnit>  
+                <p:layoutUnit position="center">  
+                    <ui:insert name="centro" >
+                       
+                            
+                         
+                    </ui:insert>
+                </p:layoutUnit> 
+                <p:layoutUnit position="south" size="30">  
+                    <ui:insert name="rodape" >
+                       Secretaria da Administração - Anexo I, Junta Médica Oficial do Estado, Quadra 103 Sul, Rua SO-1, Conjunto 2, Lote 38, 
+                       Edifício PIPES, Plano Diretor Sul, CEP:77.015-014 , Palmas/TO 
+                       Telefone: (63)3218- 1547/1511
+                       JMOE                         
+                    </ui:insert>
+                </p:layoutUnit> 
+                
+            </p:layout>  
+        </div>
+    </h:body>
+</html>

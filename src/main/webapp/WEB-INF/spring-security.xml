@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans:beans xmlns="http://www.springframework.org/schema/security"
+	xmlns:beans="http://www.springframework.org/schema/beans" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans
+	http://www.springframework.org/schema/beans/spring-beans-3.1.xsd
+	http://www.springframework.org/schema/security
+	http://www.springframework.org/schema/security/spring-security-3.1.xsd">
+        
+	<http auto-config="true"  access-denied-page="/negado.xhtml">
+            
+        <form-login login-page="/login.xhtml"  authentication-failure-url="/negado.xhtml" authentication-success-handler-ref="SucessAuthenticationHandler" /> 
+        <logout invalidate-session="true" delete-cookies="JSESSIONID"/> 
+        <intercept-url pattern="/area-usuario/*" access="ROLE_USER"/>
+               
+		
+	</http>
+         
+	<authentication-manager>
+		<authentication-provider>
+                    <password-encoder hash="md5"/>
+			<jdbc-user-service 
+                       role-prefix="ROLE_"
+                authorities-by-username-query="SELECT username, permissao FROM usuario WHERE username=?"
+                users-by-username-query="SELECT username, password, 'true' as enabled FROM usuario WHERE username=?"
+                data-source-ref="dataSource"/>
+		</authentication-provider>
+	</authentication-manager>
+
+</beans:beans>

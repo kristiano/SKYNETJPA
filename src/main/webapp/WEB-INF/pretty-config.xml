@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<pretty-config xmlns="http://ocpsoft.com/prettyfaces/3.3.2" 
+               xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+               xsi:schemaLocation="http://ocpsoft.com/prettyfaces/3.3.2
+                                   		http://ocpsoft.com/xml/ns/prettyfaces/ocpsoft-pretty-faces-3.3.2.xsd">
+  <!-- Parte do Login ###################################################-->         
+    <url-mapping id="login"> 
+        <pattern value="/login" /> 
+        <view-id value="/login.xhtml" />
+    </url-mapping> 
+  
+    
+      
+      
+    
+    <url-mapping id="inicio"> 
+        <pattern value="/area-usuario" /> 
+        <view-id value="/usuarios/usuario/index.xhtml" />          
+    </url-mapping>
+     <url-mapping id="inicio"> 
+        <pattern value="/area-usuario/" /> 
+        <view-id value="/usuarios/usuario/index.xhtml" />          
+    </url-mapping>
+    <url-mapping id="user-perfil" parentId="inicio"> 
+        <pattern value="/perfil" /> 
+        <view-id value="/usuarios/usuario/_perfil.xhtml" />          
+    </url-mapping>
+     <url-mapping id="user-cadastro" parentId="inicio"> 
+        <pattern value="/cadastro" /> 
+        <view-id value="/usuarios/usuario/_cadastro.xhtml" />          
+    </url-mapping>
+    <url-mapping id="relatorio" parentId="inicio"> 
+        <pattern value="/jmoe" /> 
+        <view-id value="/usuarios/usuario/_nois.xhtml" />          
+    </url-mapping>
+      
+      
+
+</pretty-config>

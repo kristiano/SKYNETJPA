@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+To change this template, choose Tools | Templates
+and open the template in the editor.
+-->
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:f="http://java.sun.com/jsf/core">
+    <ui:decorate template="/tema/padrao.xhtml">
+        <ui:define name="centro" >
+            <h:form id="visualizacaoVida" prependId="false" >  
+                    <p:panel id="painelVida" header="Remanejamento de Função">           
+                          <h:panelGrid columns="1" cellpadding="5" id="meuPainel">       
+                                        <p:growl id="msg_visual" showDetail="true" sticky="true"/>
+                                        <h:outputLabel for="prontuario1" value="Prontuário: " />
+                                        <p:inputText disabled="true" id="prontuario1"  value="#{prontuarioController.entity.numero}" />
+                       
+                                        <h:outputText value="Matricula: *" />  
+                                <h:outputText value="#{vidaFuncionalController.items.get(0).matricula}" /> 
+                                        <p:selectOneMenu id="combo" value="#{vidaFuncionalController.vidaFuncional}"  converter="baseEntityConverter"  >   
+                                            <f:selectItem itemLabel="Selecione" itemValue="" />    
+                                            <f:selectItems value="#{vidaFuncionalController.items}" var="cliente" itemLabel="#{cliente.matricula}" itemValue="#{cliente}" />    
+                                            <p:ajax update="meuPainel2"  event="change" />
+                                        </p:selectOneMenu> 
+                                  </h:panelGrid>
+                        
+                                <h:panelGrid columns="2" cellpadding="3" id="meuPainel2" > 
+                                    <p:panel id="painelDetalhe" header="Detalhes do Servidor"    toggleable="true" rendered="#{vidaFuncionalController.vidaFuncional.servidor.nome!= null}">
+                                              <p:column>
+                                                  <h:outputLabel for="cpf1" value="CPF: " />
+                                                  <p:inputText disabled="true" id="cpf1" value="#{vidaFuncionalController.vidaFuncional.servidor.cpf}" size="13"/>
+                                              </p:column> 
+                                              <p:column>
+                                                  <h:outputLabel  value="Lotação: " style="margin-left:15px" />
+                                                  <p:inputText disabled="true" id="lotacao1"   value="#{vidaFuncionalController.vidaFuncional.lotacao.nome}" size="40"/>
+                                              </p:column>   <br/> <br/>
+                                               <p:column>     
+                                                  <h:outputLabel  value="Orgão: " />
+                                                  <p:inputText disabled="true" id="orgao1"  value="#{vidaFuncionalController.vidaFuncional.orgao.nome}" size="40"/>
+                                               </p:column>   
+                                                <p:column>    
+                                                  <h:outputLabel value="Municipio: " style="margin-left:10px"/>
+                                                  <p:inputText disabled="true" id="municipio1"  value="#{vidaFuncionalController.vidaFuncional.cidade.nome}" size="40"/>
+                                                </p:column>  <br/><br/>
+                                                <p:column>    
+                                                  <h:outputLabel  value="Matricula: " />
+                                                  <p:inputText disabled="true" id="matricula"   value="#{vidaFuncionalController.entity.matricula}" size="8"/>                               
+                                                 </p:column> 
+                                        </p:panel>
+                                    
+                                   
+                             </h:panelGrid>     
+                         
+                </p:panel>
+                <p:commandButton actionListener="#{reportControl.PDF}"  ajax="false" value="Gerar Remanejo de Função"/>
+            </h:form>
+        </ui:define>
+        
+    </ui:decorate>
+</html>
